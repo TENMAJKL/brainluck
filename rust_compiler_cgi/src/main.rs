@@ -29,7 +29,7 @@ fn main()
             "<" => result.push_str("--pointer;"),
             "." => result.push_str("putchar(*pointer);"),
             "[" => result.push_str("while (*pointer) {"),
-            "]" => result.push_str("}"),
+            "]" => result.ush_str("}"),
             _ => result.push_str("")
         }
     }
