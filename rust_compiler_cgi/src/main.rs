@@ -18,18 +18,18 @@ fn main()
     let code = fs::read_to_string(filename)
         .expect("Error corrupted while reading file");
     let tokens = code.split("");
-    let mut result = String::from("int main() { char stack[30000] = {0}; char *pointer = stack;");
+    let mut result = String::from("#include<stdio.h>\nint main() { char stack[30000] = {0}; int pointer = 0;");
     for token in tokens
     {
         match token
         {
-            "+" => result.push_str("++*pointer;"),
-            "-" => result.push_str("--*pointer"),
-            ">" => result.push_str("++pointer;"),
-            "<" => result.push_str("--pointer;"),
-            "." => result.push_str("putchar(*pointer);"),
-            "[" => result.push_str("while (*pointer) {"),
-            "]" => result.ush_str("}"),
+            "+" => result.push_str("stack[pointer]++;"),
+            "-" => result.push_str("stack[pointer]--;"),
+            ">" => result.push_str("pointer++;"),
+            "<" => result.push_str("pointer--;"),
+            "." => result.push_str("putchar(stack[pointer]);"),
+            "[" => result.push_str("while (stack[pointer]) {"),
+            "]" => result.push_str("}"),
             _ => result.push_str("")
         }
     }
